@@ -8,7 +8,6 @@ const DEFAULT_SETTINGS = {
 const enabled = document.querySelector("#enabled");
 const stats = document.querySelector("#stats");
 const optionsButton = document.querySelector("#open-options");
-const testButton = document.querySelector("#open-test");
 
 init();
 
@@ -32,7 +31,4 @@ async function init() {
     chrome.runtime.openOptionsPage();
   });
 
-  testButton.addEventListener("click", () => {
-    chrome.tabs.create({ url: chrome.runtime.getURL("test/test.html") });
-  });
 }

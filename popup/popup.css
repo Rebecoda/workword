@@ -115,9 +115,3 @@ button {
   font: inherit;
   font-weight: 600;
 }
-
-button.secondary {
-  border: 1px solid #d0d7de;
-  background: #f6f8fa;
-  color: #24292f;
-}

@@ -209,33 +209,40 @@
         :host { all: initial; }
         .bar {
           position: fixed;
-          left: 50%;
-          bottom: 14px;
-          transform: translateX(-50%);
+          left: 0;
+          right: 0;
+          bottom: 0;
           z-index: 2147483647;
           display: ${hidden ? "none" : "grid"};
-          grid-template-columns: minmax(120px, 0.8fr) minmax(220px, 1.4fr) auto;
+          grid-template-columns: minmax(96px, 0.45fr) minmax(160px, 1fr) auto;
           align-items: center;
-          gap: 12px;
-          width: min(920px, calc(100vw - 28px));
-          min-height: 48px;
+          gap: 8px;
+          width: 100vw;
+          min-height: 30px;
           box-sizing: border-box;
-          padding: 8px 10px 8px 14px;
-          border: 1px solid rgba(32, 36, 41, 0.12);
-          border-radius: 8px;
-          background: rgba(255, 255, 255, 0.96);
-          box-shadow: 0 10px 28px rgba(0, 0, 0, 0.16);
-          color: #16181d;
-          font: 13px/1.35 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-          backdrop-filter: blur(10px);
+          padding: 3px 8px 3px 10px;
+          border-top: 1px solid rgba(31, 35, 40, 0.12);
+          background: rgba(248, 249, 250, 0.92);
+          box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.05);
+          color: #202124;
+          font: 12px/1.25 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+          backdrop-filter: blur(8px);
+          opacity: 0.88;
+          transition: opacity 120ms ease, background 120ms ease;
+        }
+        .bar:hover,
+        .bar:focus-within {
+          background: rgba(255, 255, 255, 0.97);
+          opacity: 1;
         }
         .bar:focus-within {
-          outline: 2px solid #2f6feb;
-          outline-offset: 2px;
+          outline: 1px solid rgba(31, 111, 235, 0.45);
+          outline-offset: -1px;
         }
         .term {
-          font-size: 18px;
-          font-weight: 700;
+          display: inline;
+          font-size: 13px;
+          font-weight: 650;
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
@@ -247,32 +254,29 @@
           white-space: nowrap;
         }
         .example {
-          color: #69717d;
-          font-size: 12px;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
+          display: none;
         }
         .actions {
           display: flex;
           align-items: center;
-          gap: 6px;
+          gap: 4px;
           justify-content: flex-end;
           white-space: nowrap;
         }
         button {
-          border: 1px solid rgba(32, 36, 41, 0.14);
-          border-radius: 6px;
-          background: #f6f8fa;
-          color: #1f2328;
-          padding: 6px 9px;
+          min-height: 22px;
+          border: 1px solid rgba(31, 35, 40, 0.1);
+          border-radius: 4px;
+          background: rgba(255, 255, 255, 0.56);
+          color: #3c4043;
+          padding: 2px 6px;
           font: inherit;
           cursor: pointer;
         }
-        button:hover { background: #eef2f6; }
+        button:hover { background: rgba(232, 240, 254, 0.8); }
         button:disabled {
           cursor: not-allowed;
-          opacity: 0.52;
+          display: none;
         }
         .primary {
           border-color: #1f6feb;
@@ -283,40 +287,38 @@
           background: transparent;
         }
         .meta {
-          color: #69717d;
-          font-size: 12px;
+          display: inline;
+          margin-left: 6px;
+          color: #80868b;
+          font-size: 11px;
         }
         .feedback {
-          color: #1a7f37;
+          color: #188038;
           font-weight: 600;
         }
         .dock {
           position: fixed;
-          right: 16px;
-          bottom: 16px;
+          right: 10px;
+          bottom: 8px;
           z-index: 2147483647;
           display: ${hidden ? "block" : "none"};
-          border: 1px solid rgba(32, 36, 41, 0.14);
-          border-radius: 999px;
-          background: rgba(255, 255, 255, 0.94);
-          box-shadow: 0 8px 22px rgba(0, 0, 0, 0.16);
-          color: #1f2328;
-          padding: 7px 11px;
-          font: 12px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+          border: 1px solid rgba(31, 35, 40, 0.12);
+          border-radius: 5px;
+          background: rgba(248, 249, 250, 0.92);
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+          color: #5f6368;
+          padding: 4px 8px;
+          font: 11px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
           cursor: pointer;
         }
         @media (max-width: 700px) {
           .bar {
-            grid-template-columns: 1fr;
-            align-items: stretch;
+            grid-template-columns: minmax(80px, 0.7fr) minmax(100px, 1fr) auto;
+            gap: 5px;
+            padding: 3px 5px;
           }
           .actions {
-            justify-content: flex-start;
-            flex-wrap: wrap;
-          }
-          .meaning,
-          .example {
-            white-space: normal;
+            overflow-x: auto;
           }
         }
       </style>
@@ -333,9 +335,9 @@
         <div class="actions">
           <button data-add-selection disabled>Add selection</button>
           <button class="ghost" data-toggle-meaning>${state.meaningVisible ? "Hide" : "Space"}</button>
-          <button data-review="known">1 认识</button>
-          <button data-review="fuzzy">2 模糊</button>
-          <button data-review="unknown">3 不认识</button>
+          <button data-review="known">1</button>
+          <button data-review="fuzzy">2</button>
+          <button data-review="unknown">3</button>
           <button class="ghost" data-hide>Esc</button>
         </div>
       </section>

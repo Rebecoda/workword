@@ -9,7 +9,7 @@ A local-first Chrome extension prototype for low-distraction vocabulary review w
 3. Click `Load unpacked`.
 4. Select this folder:
 
-   `/Users/rebeccapan/Documents/Codex/2026-05-21/chrome`
+   `/Users/rebeccapan/Codex/2026-05-21/chrome`
 
 5. Open a normal website, such as `https://example.com`.
 6. Click the bottom review bar once, then use the keyboard shortcuts.
