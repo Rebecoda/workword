@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Workword</title>
+    <link rel="stylesheet" href="popup.css">
+  </head>
+  <body>
+    <main>
+      <header>
+        <div>
+          <h1>Workword</h1>
+          <p id="stats">Loading...</p>
+        </div>
+        <label class="switch">
+          <input id="enabled" type="checkbox">
+          <span></span>
+        </label>
+      </header>
+
+      <section class="shortcuts">
+        <p class="notice">打开普通网页后刷新页面；Chrome 内部页面不会显示底栏。</p>
+        <div><kbd>Alt</kbd> + <kbd>W</kbd><span>显示/隐藏</span></div>
+        <div><kbd>Space</kbd><span>查看释义</span></div>
+        <div><kbd>1</kbd><kbd>2</kbd><kbd>3</kbd><span>认识/模糊/不认识</span></div>
+      </section>
+
+      <button id="open-test" class="secondary">打开测试页</button>
+      <button id="open-options">管理词书</button>
+    </main>
+    <script src="popup.js"></script>
+  </body>
+</html>

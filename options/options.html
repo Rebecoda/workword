@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Workword Options</title>
+    <link rel="stylesheet" href="options.css">
+  </head>
+  <body>
+    <main>
+      <header>
+        <div>
+          <h1>Workword</h1>
+          <p>本地离线词书和复习设置</p>
+        </div>
+        <button id="export-json">导出 JSON</button>
+      </header>
+
+      <section class="panel">
+        <h2>导入词书</h2>
+        <p class="hint">支持 CSV 或 TXT。推荐格式：单词,释义,例句。也可以每行一个单词。</p>
+        <textarea id="import-text" placeholder="abandon,放弃；抛弃,abandon the plan&#10;brief,简短的；简报,send a brief update"></textarea>
+        <div class="row">
+          <input id="file-input" type="file" accept=".csv,.txt,.json">
+          <button id="import-button">导入</button>
+        </div>
+        <p id="import-status" class="status"></p>
+      </section>
+
+      <section class="panel grid">
+        <label>
+          <span>启用底栏</span>
+          <input id="enabled" type="checkbox">
+        </label>
+        <label>
+          <span>默认显示释义</span>
+          <input id="auto-show" type="checkbox">
+        </label>
+        <label>
+          <span>每日目标</span>
+          <input id="daily-target" type="number" min="1" max="200">
+        </label>
+      </section>
+
+      <section class="panel">
+        <div class="section-title">
+          <h2>词库</h2>
+          <button id="clear-words" class="danger">清空词库</button>
+        </div>
+        <div id="word-list" class="word-list"></div>
+      </section>
+    </main>
+    <script src="options.js"></script>
+  </body>
+</html>
